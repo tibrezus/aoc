@@ -1,0 +1,16 @@
+name: Zig Build Template
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.zig'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Zig Code
+        run: zig build -Drelease-safe
