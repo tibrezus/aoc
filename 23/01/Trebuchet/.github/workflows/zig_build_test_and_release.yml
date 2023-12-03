@@ -5,21 +5,20 @@ on:
     paths:
       - '23/01/Trebuchet/**'
       - '**.zig'
-
-workflow_dispatch:
-  inputs:
-    test_path:
-      description: 'Path to test files'
-      required: true
-      default: '23/01/Trebuchet/test/main_test.zig'
-    build_path:
-      description: 'Path to build'
-      required: false
-      default: '23/01/Trebuchet'
-    release_path:
-      description: 'Path to release'
-      required: false
-      default: '23/01/Trebuchet'
+  workflow_dispatch:
+    inputs:
+      test_path:
+        description: 'Path to test files'
+        required: true
+        default: '23/01/Trebuchet/test/main_test.zig'
+      build_path:
+        description: 'Path to build'
+        required: false
+        default: '23/01/Trebuchet'
+      release_path:
+        description: 'Path to release'
+        required: false
+        default: '23/01/Trebuchet'
 
 jobs:
   test:
