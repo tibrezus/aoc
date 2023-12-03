@@ -50,3 +50,18 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Zig Package Manager
+.zig/
+
+# Zig Build
+zig-cache/
+
+# Zig Test
+zig-out/
+zig-test/
+zig-fuzz/
+
+# Zig Format
+zig-fmt/
+
