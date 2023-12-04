@@ -3,7 +3,7 @@ const main = @import("../src/main.zig");
 
 test "Test using example file" {
     const stdout = std.io.getStdOut().writer();
-    var file = try std.fs.cwd().openFile("example", .{ .read = true });
+    var file = try std.fs.cwd().openFile("../data/example", .{ .read = true });
     defer file.close();
 
     var sum: u32 = 0;
@@ -18,6 +18,6 @@ test "Test using example file" {
             sum += first * 10 + last;
         }
     }
-
+    try stdout.print("Sum: {}\n", .{sum});
     std.testing.expectEqual(sum, 143);
 }
