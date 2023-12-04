@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - '23/01/Trebuchet/**'
-      - '**.zig'
   workflow_dispatch:
     inputs:
       test_path:
@@ -14,11 +13,11 @@ on:
       build_path:
         description: 'Path to build'
         required: false
-        default: '23/01/Trebuchet'
+        default: '23/01/Trebuchet/src/main.zig'
       release_path:
         description: 'Path to release'
         required: false
-        default: '23/01/Trebuchet'
+        default: '23/01/Trebuchet/src/main.zig'
 
 jobs:
   test:
