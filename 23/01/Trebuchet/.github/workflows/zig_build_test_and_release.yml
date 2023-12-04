@@ -1,0 +1,37 @@
+name: CI for 23/01/Trebuchet
+
+on:
+  push:
+    paths:
+      - '23/01/Trebuchet/**'
+      - '**.zig'
+  workflow_dispatch:
+    inputs:
+      test_path:
+        description: 'Path to test files'
+        required: true
+        default: '23/01/Trebuchet/test/main_test.zig'
+      build_path:
+        description: 'Path to build'
+        required: false
+        default: '23/01/Trebuchet'
+      release_path:
+        description: 'Path to release'
+        required: false
+        default: '23/01/Trebuchet'
+
+jobs:
+  test:
+    uses: ./.github/workflows/zig_test_template.yml
+    with:
+      test_path: ${{ github.event.inputs.test_path }}
+
+  build:
+    uses: ./.github/workflows/zig_build_template.yml
+    with:
+      build_path: ${{ github.event.inputs.build_path }}
+
+  release:
+    uses: ./.github/workflows/zig_release_template.yml
+    with:
+      release_path: ${{ github.event.inputs.release_path }}

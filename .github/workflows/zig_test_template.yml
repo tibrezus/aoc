@@ -1,0 +1,16 @@
+name: Zig Test Template
+
+on:
+  push:
+    paths:
+      - '**/*.zig'
+    branches-ignore:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Tests
+        run: zig test ${{ github.workspace }}/${{ github.event.inputs.test_path }}
