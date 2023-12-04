@@ -28,7 +28,7 @@ pub fn main() !void {
 
 // Function to find a digit in a line of text.
 // If 'FindFirst' is true, it find the first digit; otherwise, it finds the last digit.
-fn findDigit(line: []const u8, findFirst: bool) ?u8 {
+pub fn findDigit(line: []const u8, findFirst: bool) ?u8 {
     if (findFirst) {
         // Loop trough each caracter in the line and find the first digit.
         for (line) |char| {
