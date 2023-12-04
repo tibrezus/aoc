@@ -1,19 +1,29 @@
 name: Zig Build Template
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - '**/*.zig'
+  workflow_call:
+    inputs:
+      build_path:
+        description: 'Path to build'
+        required: true
+        type: string
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: goto-bus-stop/setup-zig@v2
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Zig
+        uses: goto-bus-stop/setup-zig@v2
         with:
           version: 0.11.0
+
+      - name: Change to Build Directory
+        run: cd ${{ inputs.build_path }}
+
       - name: Build
-        run: zig build -Drelease-safe --path ${{ github.workspace }}/${{ github.event.inputs.build_path }}
+        run: zig build -Drelease-safe
+
+      # Optionally, add steps to handle the build artifacts (like archiving them)

@@ -12,11 +12,11 @@ on:
         default: '23/01/Trebuchet/test/main_test.zig'
       build_path:
         description: 'Path to build'
-        required: false
+        required: true
         default: '23/01/Trebuchet/src/main.zig'
       release_path:
         description: 'Path to release'
-        required: false
+        required: true
         default: '23/01/Trebuchet/src/main.zig'
 
 jobs:

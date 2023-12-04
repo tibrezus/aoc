@@ -1,11 +1,12 @@
 name: Zig Test Template
 
 on:
-  push:
-    paths:
-      - '**/*.zig'
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      test_path:
+        description: 'Path to test files'
+        required: true
+        type: string
 
 jobs:
   test:
@@ -17,4 +18,4 @@ jobs:
         with:
           version: 0.11.0
       - name: Run Tests
-        run: zig test ${{ github.workspace }}/${{ github.event.inputs.test_path }}
+        run: zig test ${{ inputs.test_path }}
