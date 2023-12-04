@@ -21,16 +21,16 @@ on:
 
 jobs:
   test:
-    uses: ./zig_test_template.yml
+    uses: ./.github/workflows/zig_test_template.yml
     with:
       test_path: ${{ github.event.inputs.test_path }}
 
   build:
-    uses: ./zig_build_template.yml
+    uses: ./.github/workflows/zig_build_template.yml
     with:
       build_path: ${{ github.event.inputs.build_path }}
 
   release:
-    uses: ./zig_release_template.yml
+    uses: ./.github/workflows/zig_release_template.yml
     with:
       release_path: ${{ github.event.inputs.release_path }}
