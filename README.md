@@ -1,4 +1,4 @@
-# Adventure of Code (AOC)
+# Advent of Code (AOC)
 
 ## 2023 - The Zig Chronicles
 
