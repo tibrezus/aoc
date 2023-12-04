@@ -9,8 +9,8 @@ test "Test using example file" {
     var sum: u32 = 0;
 
     while (try file.reader().readUntilDelimiter(&std.heap.page_allocator, "\n")) |line| {
-        const first_digit = findDigit(line, true);
-        const last_digit = findDigit(line, false);
+        const first_digit = main.findDigit(line, true);
+        const last_digit = main.findDigit(line, false);
 
         if (first_digit and last_digit) {
             const first = first_digit.?;
