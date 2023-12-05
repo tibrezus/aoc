@@ -1,11 +1,33 @@
-const Builder = @import("std").build.Builder;
+const std = @import("std");
 
-pub fn build(b: *Builder) void {
-    const mode = b.standardReleaseOptions();
-    const exe = b.addExecutable("main", "src/main.zig");
-    exe.setBuildMode(mode);
-    exe.install();
+pub fn build(b: *std.Build) void {
+    const target = b.standardTargetOptions(.{});
+    const optimize = b.standardOptimizeOption(.{});
 
-    const test_exe = b.addTest("src/main_test.zig");
-    test_exe.setBuildMode(mode);
+    const exe = b.addExecutable(.{
+        .name = "trebuchet",
+        .root_source_file = std.fs.path.join(b.allocator, &[_][]const u8{
+            "src",
+            "main.zig",
+        }),
+        .target = target,
+        .optimize = optimize,
+    });
+
+    b.installArtifact(exe);
+
+    const exe_test = b.addTest(.{
+        .name = "trebuchet_test",
+        .root_source_file = std.fs.path.join(b.allocator, &[_][]const u8{
+            "src",
+            "test.zig",
+        }),
+        .target = target,
+        .optimize = optimize,
+    });
+
+    const run_exe_test = b.addRunArtifact(exe_test);
+
+    const test_step = b.step("test", "Run tests");
+    test_step.dependOn(&run_exe_test.step);
 }
