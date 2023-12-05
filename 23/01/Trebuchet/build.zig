@@ -6,10 +6,7 @@ pub fn build(b: *std.Build) void {
 
     const exe = b.addExecutable(.{
         .name = "trebuchet",
-        .root_source_file = std.fs.path.join(b.allocator, &[_][]const u8{
-            "src",
-            "main.zig",
-        }),
+        .root_source_file = .{ .path = "src/main.zig"},
         .target = target,
         .optimize = optimize,
     });
@@ -18,10 +15,7 @@ pub fn build(b: *std.Build) void {
 
     const exe_test = b.addTest(.{
         .name = "trebuchet_test",
-        .root_source_file = std.fs.path.join(b.allocator, &[_][]const u8{
-            "src",
-            "test.zig",
-        }),
+        .root_source_file = .{ .path = "src/main.zig"},
         .target = target,
         .optimize = optimize,
     });
