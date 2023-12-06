@@ -25,6 +25,6 @@ jobs:
         run: cd build
 
       - name: Run Tests
-        working-directory: ${{ inputs.build_path }}
+        working-directory: ${{ inputs.test_path }}
         run: zig build test --summary all
  
