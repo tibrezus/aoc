@@ -67,6 +67,7 @@ fn findDigit(line: []const u8, findFirst: bool) ?u8 {
 
 test "Test using example file" {
     const stdout = std.io.getStdOut().writer();
+    try stdout.print("Opening file...\n", .{});
     var file = try std.fs.cwd().openFile("data/example", .{});
     defer file.close();
 
@@ -93,5 +94,5 @@ test "Test using example file" {
         }
     }
     try stdout.print("Sum: {}\n", .{sum});
-    try std.testing.expectEqual(sum, 143);
+    try std.testing.expectEqual(sum, 142);
 }

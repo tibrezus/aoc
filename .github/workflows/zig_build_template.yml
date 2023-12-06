@@ -24,6 +24,6 @@ jobs:
         run: cd ${{ inputs.build_path }}
 
       - name: Build
-        run: zig build -Drelease-safe
+        run: zig build run
 
       # Optionally, add steps to handle the build artifacts (like archiving them)
