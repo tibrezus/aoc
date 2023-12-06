@@ -13,13 +13,18 @@ jobs:
     name: Test on linux
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: goto-bus-stop/setup-zig@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Zig
+        uses: goto-bus-stop/setup-zig@v2
         with:
           version: 0.11.0
 
       - name: Change to Build directory
-        run: cd ${{ input.build_path }}
- 
+        run: cd build
+
       - name: Run Tests
+        working-directory: ${{ inputs.build_path }}
         run: zig build test --summary all
+ 

@@ -9,7 +9,7 @@ on:
       build_path:
         description: 'Path to test files'
         required: true
-        default: '23/01/Trebuchet/build.zig'
+        default: '23/01/Trebuchet/'
 
 jobs:
   test:

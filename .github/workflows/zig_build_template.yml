@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: Build on linux
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -20,10 +21,8 @@ jobs:
         with:
           version: 0.11.0
 
-      - name: Change to Build Directory
-        run: cd ${{ inputs.build_path }}
-
       - name: Build
+        working-directory: ${{ inputs.build_path }}
         run: zig build run
 
       # Optionally, add steps to handle the build artifacts (like archiving them)
