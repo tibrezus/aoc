@@ -6,7 +6,7 @@ on:
       - '23/01/Trebuchet/**'
   workflow_dispatch:
     inputs:
-      build_path:
+      path:
         description: 'Path to test files'
         required: true
         default: '23/01/Trebuchet/'
@@ -15,9 +15,9 @@ jobs:
   test:
     uses: ./.github/workflows/zig_test_template.yml
     with:
-      test_path: ${{ github.event.inputs.build_path }}
+      test_path: ${{ github.event.inputs.path }}
 
   build:
     uses: ./.github/workflows/zig_build_template.yml
     with:
-      build_path: ${{ github.event.inputs.build_path }}
+      build_path: ${{ github.event.inputs.path }}
