@@ -2,6 +2,11 @@ name: Zig Build Template
 
 on:
   workflow_call:
+    inputs:
+      build_path:
+        description: 'Path to the build directory'
+        required: true
+        type: string
       
 jobs:
   reusable-zig-run:
@@ -17,14 +22,14 @@ jobs:
           version: 0.11.0
 
       - name: Verify build path
-        run: echo "Build path $CHALLENGE_PATH exists"
+        run: echo "Build path '${{ inputs.build_path }}' exists"
 
       - name: Test
-        working-directory: $CHALLENGE_PATH
+        working-directory: ${{ inputs.build_path }}
         run: zig build test
 
       - name: Build
-        working-directory: $CHALLENGE_PATH
+        working-directory: ${{ inputs.build_path }}
         run: zig build run
 
       # Optionally, add steps to handle the build artifacts (like archiving them)
