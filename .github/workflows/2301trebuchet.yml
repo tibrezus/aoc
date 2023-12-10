@@ -7,12 +7,8 @@ on:
       - '.github/**'
   workflow_dispatch:
 
-env:
-  # Set challenge path
-  CHALLENGE_PATH: '23/01/Trebuchet'
-
 jobs:
   run:
     uses: ./.github/workflows/zig_run_template.yml
     with:
-      build_path: $CHALLENGE_PATH
+      build_path: '23/01/Trebuchet'
