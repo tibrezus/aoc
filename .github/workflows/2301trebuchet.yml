@@ -14,6 +14,6 @@ on:
 
 jobs:
   run:
-    uses: ./.github/workflows/zig_build_template.yml
+    uses: ./.github/workflows/zig_run_template.yml
     with:
       build_path: ${{ github.event.inputs.path }}
