@@ -21,12 +21,13 @@ jobs:
         with:
           version: 0.11.0
 
+      - name: Change directoru
+        run: cd ${{ inputs.build_path }}
+
       - name: Test
-        working-directory: ${{ inputs.build_path }}
         run: zig build test
 
       - name: Build
-        working-directory: ${{ inputs.build_path }}
         run: zig build run
 
       # Optionally, add steps to handle the build artifacts (like archiving them)
