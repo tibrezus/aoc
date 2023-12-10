@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       path:
-        description: 'Path to test files'
+        description: 'Path to build'
         required: true
-        default: '23/01/Trebuchet/'
+        default: '23/01/Trebuchet'
 
 jobs:
   test:
