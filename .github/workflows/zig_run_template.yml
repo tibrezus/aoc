@@ -26,7 +26,7 @@ jobs:
 
       - name: Test
         working-directory: ${{ inputs.build_path }}
-        run: zig build test
+        run: zig build test --summaru all
 
       - name: Build
         working-directory: ${{ inputs.build_path }}

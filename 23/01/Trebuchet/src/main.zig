@@ -168,8 +168,6 @@ test "Test using real file" {
         const first_digit_opt = findReal(line, true);
         const last_digit_opt = findReal(line, false);
 
-        try stdout.print("{}: {} {}\n", .{ line, first_digit_opt, last_digit_opt });
-
         if (first_digit_opt != null and last_digit_opt != null) {
             const first_digit = first_digit_opt.?;
             const last_digit = last_digit_opt.?;
