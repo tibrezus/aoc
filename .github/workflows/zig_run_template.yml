@@ -25,6 +25,11 @@ jobs:
         run: cd ${{ inputs.build_path }}
 
       - name: Test
+        run:
+          pwd
+          ls -ltra
+
+      - name: Test
         run: zig build test
 
       - name: Build
