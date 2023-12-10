@@ -9,7 +9,7 @@ on:
         type: string
       
 jobs:
-  run:
+  reusable-zig-run:
     name: Build on linux
     runs-on: ubuntu-latest
     steps:

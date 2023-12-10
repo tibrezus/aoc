@@ -6,14 +6,13 @@ on:
       - '23/01/Trebuchet/**'
       - '.github/**'
   workflow_dispatch:
-    inputs:
-      path:
-        description: 'Path to build'
-        required: true
-        default: '23/01/Trebuchet'
+
+env:
+  # Set challenge path
+  CHALLENGE_PATH: '23/01/Trebuchet'
 
 jobs:
   run:
     uses: ./.github/workflows/zig_run_template.yml
     with:
-      build_path: ${{ inputs.path }}
+      build_path: $CHALLENGE_PATH
