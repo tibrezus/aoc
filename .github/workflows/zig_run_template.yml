@@ -2,7 +2,12 @@ name: Zig Build Template
 
 on:
   workflow_call:
-
+    inputs:
+      build_path:
+        description: 'Path to the build directory'
+        required: true
+        type: string
+      
 jobs:
   run:
     name: Build on linux
@@ -17,7 +22,7 @@ jobs:
           version: 0.11.0
 
       - name: Change directoru
-        run: cd ${{ github.event.inputs.build_path }}
+        run: cd ${{ inputs.build_path }}
 
       - name: Test
         run:
