@@ -16,4 +16,4 @@ jobs:
   run:
     uses: ./.github/workflows/zig_run_template.yml
     with:
-      build_path: ${{ inputs.path }}
+      build_path: ${{ github.workspace }}/${{ inputs.path }}
