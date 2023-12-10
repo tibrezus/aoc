@@ -18,7 +18,6 @@ pub fn main() !void {
     var buffer = try allocator.alloc(u8, 4096);
     defer allocator.free(buffer);
 
-
     // Read each line of the file until EOF (End of File) is reached.
     while (true) {
         const lineOpt = try file.reader().readUntilDelimiterOrEof(buffer, '\n');
@@ -81,7 +80,7 @@ fn findReal(line: []const u8, findFirst: bool) ?u8 {
         key: []const u8,
         value: u8,
     };
-    
+
     const digitMap = [_]DigitPair{
         DigitPair{ .key = "zero", .value = 0 },
         DigitPair{ .key = "one", .value = 1 },
@@ -168,6 +167,9 @@ test "Test using real file" {
 
         const first_digit_opt = findReal(line, true);
         const last_digit_opt = findReal(line, false);
+
+        // Print the line and the first and last digits.
+        try stdout.print("{}: {} {}\n", .{ line, first_digit_opt, last_digit_opt });
 
         if (first_digit_opt != null and last_digit_opt != null) {
             const first_digit = first_digit_opt.?;
