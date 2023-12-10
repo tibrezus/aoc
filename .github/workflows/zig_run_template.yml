@@ -21,9 +21,14 @@ jobs:
         with:
           version: 0.11.0
 
-      - name: Pwd
-        working-directory: ${{ inputs.build_path }}
-        run: pwd
+      - name: Verify build path
+        run: |
+          if [ ! -d "${{ inputs.build_path }}" ]; then
+            echo "Build path '${{ inputs.build_path }}' does not exist"
+            exit 1
+          else
+            echo "Build path '${{ inputs.build_path }}' exists"
+          fi
 
       - name: Test
         working-directory: ${{ inputs.build_path }}
