@@ -22,7 +22,7 @@ jobs:
           version: 0.11.0
 
       - name: Change directoru
-        run: cd ${{ inputs.build_path }}
+        run: cd ${{ github.event.inputs.build_path }}
 
       - name: Test
         run:
