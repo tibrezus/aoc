@@ -7,7 +7,7 @@ on:
       - '.github/**'
   workflow_dispatch:
     inputs:
-      path:
+      build_path:
         description: 'Path to build'
         required: true
         default: '23/01/Trebuchet'
@@ -16,4 +16,4 @@ jobs:
   run:
     uses: ./.github/workflows/zig_run_template.yml
     with:
-      build_path: ${{ github.event.inputs.path }}
+      build_path: ${{ github.event.inputs.build_path }}
