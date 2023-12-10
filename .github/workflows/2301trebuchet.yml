@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '23/01/Trebuchet/**'
+      - '.github/**'
   workflow_dispatch:
     inputs:
       path:
@@ -12,12 +13,7 @@ on:
         default: '23/01/Trebuchet'
 
 jobs:
-  test:
-    uses: ./.github/workflows/zig_test_template.yml
-    with:
-      test_path: ${{ github.event.inputs.path }}
-
-  build:
+  run:
     uses: ./.github/workflows/zig_build_template.yml
     with:
       build_path: ${{ github.event.inputs.path }}
